@@ -19,7 +19,7 @@ def store_file_metadata(list_of_paths):
             print(f"{filename} found")
         except FileNotFoundError:
             print(f"{filename} could not be found")
-        time.sleep(1)
+        time.sleep(0.2)
 
 
     if len(file_metadata) == 0:
@@ -49,11 +49,11 @@ def load_book(book_content):
         page += f"{word} "
         
         if len(page) > 2000:
-            page += "\n\nn - next_page, p - previous_page, e - exit, f - first_page, l - last_page"
             pages.append(page)
             page_counter += 1
             page = f"Page {page_counter}\n\n"
     
     return pages
+
 
 

@@ -48,7 +48,9 @@ def open_book(file_meta):
             return
         elif user_input == "s":
             os.system("clear")
-            print(stats_string(file_meta))
+            if not "stats" in file_meta:
+                stats_string(file_meta)
+            print(file_meta["stats"])
             i = input()
         elif user_input == "r":
             book = load_book(file_meta["contents"])
@@ -62,6 +64,7 @@ def read_book(book):
     while True:
         os.system("clear")
         print(book[index])
+        print("\n\nn - next_page, p - previous_page, e - exit, f - first_page, l - last_page")
         user_input = input()
 
         if user_input == "e":
@@ -131,8 +134,7 @@ def stats_string(file_meta):
         "   type any character to return"
            )
 
-    return header + character_counts + end
-
+    file_meta["stats"] = header + character_counts + end
 
 main()
 
